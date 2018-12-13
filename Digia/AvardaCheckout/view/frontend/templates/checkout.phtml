@@ -1,0 +1,58 @@
+<?php /** @var Digia\AvardaCheckout\Block\Checkout $block */ ?>
+<?php
+  $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+  $getLocale = $objectManager->get('Magento\Framework\Locale\Resolver');
+  $config = [
+    "baseMediaUrl" => $block->getBaseMediaUrl(),
+    "baseUrl" => $block->getBaseUrl(),
+    "continueShoppingUrl" => $block->getBaseUrl(),
+    "countryId" => $block->getCountryId(),
+    "customerId" => $block->getCustomerId(),
+    "hasItems" => $block->hasItems(),
+    "magentoLocale" => $getLocale->getLocale(),
+    "maskedQuoteId" => $block->getMaskedQuoteId(),
+    "quoteId" => $block->getQuoteId(),
+    "saveOrderUrl" => $block->getSaveOrderUrl(),
+    "callbackUrl" => $block->getCallbackUrl(),
+    "productPlaceholderImage" => $block->getProductPlaceholderUrl(),
+    "avardaConfig" => [
+      "customCssUrl" => $block->getCustomCssUrl(),
+      "replaceDefaultCss" => $block->isReplaceDefaultCss(),
+    ],
+  ];
+?>
+
+<div id="checkout-root"></div>
+<script>
+window.checkoutConfig = <?php /* @escapeNotVerified */ echo json_encode($block->getCheckoutConfig()); ?>;
+// Create aliases for customer.js model from customer module
+window.isCustomerLoggedIn = window.checkoutConfig.isCustomerLoggedIn;
+window.customerData = window.checkoutConfig.customerData;
+</script>
+<!-- Get the components from layout configuration -->
+<script type="text/x-magento-init">
+{
+    "*": {
+      "Magento_Ui/js/core/app": <?php echo $block->getJsLayout(); ?>
+    }
+}
+</script>
+<script type="text/javascript">
+// Shim Avarda's iframe script to be used with Require.js
+require.config(({
+  shim: {
+    AvardaCheckOutClient: {
+      exports: 'AvardaCheckOutClient'
+    }
+  },
+  paths: {
+    AvardaCheckOutClient:<?php echo json_encode($block->getCheckOutClientScriptPath()); ?>
+  }
+}));
+require([
+  'avardaCheckout',
+], function(avardaCheckout) {
+  avardaCheckout.execute(
+    <?php echo json_encode($config); ?>);
+});
+</script>

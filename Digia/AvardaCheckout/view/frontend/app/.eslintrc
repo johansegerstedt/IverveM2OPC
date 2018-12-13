@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:flowtype/recommended",
+    "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ],
+  "plugins": ["flowtype", "react", "prettier", "standard", "jsx-a11y"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": false,
+    "browser": true
+  },
+  "globals": {
+    "process": false
+  },
+  "rules": {
+    "prettier/prettier":
+      "error"
+    ,
+    "flowtype/require-valid-file-annotation": [
+      "error",
+      "always",
+      { "annotationStyle": "line" }
+    ],
+    "react/jsx-uses-vars": "error",
+    "react/jsx-uses-react": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/jsx-closing-bracket-location": "error",
+    "react/jsx-closing-tag-location": "error"
+  }
+}

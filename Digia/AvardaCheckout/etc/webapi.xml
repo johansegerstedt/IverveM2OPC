@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Digia Commerce Oy
+ * @copyright   Copyright © 2017 Digia. All rights reserved.
+ * @package     Digia_AvardaCheckout
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+    <!-- Guest Avarda initialize payment -->
+    <route url="/V1/guest-carts/:cartId/avarda-payment" method="GET">
+        <service class="Digia\AvardaCheckout\Api\GuestPaymentManagementInterface" method="getPurchaseId"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Avarda initialize payment -->
+    <route url="/V1/carts/mine/avarda-payment" method="GET">
+        <service class="Digia\AvardaCheckout\Api\PaymentManagementInterface" method="getPurchaseId"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+
+    <!-- Guest Avarda freeze cart before payment -->
+    <route url="/V1/guest-carts/:cartId/avarda-payment" method="POST">
+        <service class="Digia\AvardaCheckout\Api\GuestPaymentManagementInterface" method="freezeCart"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Avarda freeze cart before payment -->
+    <route url="/V1/carts/mine/avarda-payment" method="POST">
+        <service class="Digia\AvardaCheckout\Api\PaymentManagementInterface" method="freezeCart"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+
+    <!-- Guest Avarda cart items info -->
+    <route url="/V1/guest-carts/:cartId/avarda-items" method="GET">
+        <service class="Digia\AvardaCheckout\Api\GuestPaymentManagementInterface" method="getItemDetailsList"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Avarda cart items info -->
+    <route url="/V1/carts/mine/avarda-items" method="GET">
+        <service class="Digia\AvardaCheckout\Api\PaymentManagementInterface" method="getItemDetailsList"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>

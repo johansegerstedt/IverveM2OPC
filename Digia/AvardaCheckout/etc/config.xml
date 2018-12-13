@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Digia Commerce Oy
+ * @copyright   Copyright © 2017 Digia. All rights reserved.
+ * @package     Digia_AvardaCheckout
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <avarda_checkout>
+                <model>AvardaCheckoutFacade</model>
+                <active>0</active>
+                <test_mode>1</test_mode>
+                <debug>1</debug>
+                <onepage_redirect_active>0</onepage_redirect_active>
+                <automatic_invoicing_active>0</automatic_invoicing_active>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial>1</can_refund_partial>
+            </avarda_checkout>
+            <avarda_invoice>
+                <model>AvardaCheckoutInvoiceFacade</model>
+                <active>1</active>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial>1</can_refund_partial>
+            </avarda_invoice>
+            <avarda_loan>
+                <model>AvardaCheckoutLoanFacade</model>
+                <active>1</active>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial>1</can_refund_partial>
+            </avarda_loan>
+            <avarda_card>
+                <model>AvardaCheckoutCardFacade</model>
+                <active>1</active>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial>1</can_refund_partial>
+            </avarda_card>
+            <avarda_directpayment>
+                <model>AvardaCheckoutDirectPaymentFacade</model>
+                <active>1</active>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial>1</can_refund_partial>
+            </avarda_directpayment>
+            <avarda_partpayment>
+                <model>AvardaCheckoutPartPaymentFacade</model>
+                <active>1</active>
+                <can_capture>1</can_capture>
+                <can_capture_partial>1</can_capture_partial>
+                <can_refund>1</can_refund>
+                <can_refund_partial>1</can_refund_partial>
+            </avarda_partpayment>
+        </payment>
+    </default>
+</config>

@@ -1,0 +1,18 @@
+[ignore]
+.*/build/.*
+.*/dist/.*
+.*/node_modules/**/*
+webpack*
+
+[include]
+<PROJECT_ROOT>/src
+[libs]
+<PROJECT_ROOT>/flow-typed/
+
+[lints]
+all=warn
+
+[options]
+module.name_mapper='^.*\.less$' -> 'css-module-flow'
+module.name_mapper='^\$src' -> '<PROJECT_ROOT>/src'
+module.name_mapper='^\$i18n' -> '<PROJECT_ROOT>/src/i18n'

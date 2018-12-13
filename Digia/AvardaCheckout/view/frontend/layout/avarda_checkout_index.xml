@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="avarda_checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="//fonts.googleapis.com/icon?family=Material+Icons" src_type="url" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Digia\AvardaCheckout\Block\Checkout"
+                   name="checkout.root"
+                   template="Digia_AvardaCheckout::checkout.phtml"
+                   cacheable="false">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="types" xsi:type="array"/>
+                        <item name="components" xsi:type="array">
+                            <!-- Uncomment to define shippingAdditional content
+                            <item name="shippingAdditional" xsi:type="array">
+                                <item name="component" xsi:type="string">Markup_Smartship/js/view/checkout/shipping/additional-block</item>
+                            </item>
+                            -->
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="page.messages" remove="true"/>
+    </body>
+</page>
